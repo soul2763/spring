@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 /*
  * 날짜 : 2019/03/05
- * 이름 : 김철학
+ * 이름 : 류경선
  * 내용 : Ioc 실습하기
  * 
 	어노테이션 종류

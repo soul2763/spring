@@ -5,7 +5,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 /*
 날짜 : 2019/03/06
-이름 : 김철학
+이름 : 류경선
 내용 : AOP 실습하기
  
 스프링 AOP

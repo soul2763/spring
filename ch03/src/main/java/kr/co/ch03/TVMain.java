@@ -5,7 +5,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 /*
  * 날짜 : 2019/03/05
- * 이름 : 김철학
+ * 이름 : 류경선
  * 내용 : Ioc 실습하기
  */
 public class TVMain {
