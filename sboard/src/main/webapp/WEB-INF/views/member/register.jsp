@@ -9,20 +9,20 @@
 	<body>
 		<div id="member">
 			<section class="register">
-				<form action="#" method="POST">
+				<form action="/sboard/member/register" method="POST">
 					<section>
 						<table>
 							<caption>사이트 이용정보 입력</caption>
 							<tr>
 								<td>아이디</td>
 								<td>
-									<input type="text" name="id" placeholder="아이디를 입력" required />
+									<input type="text" name="uid" placeholder="아이디를 입력" required />
 									<span class="resultId"></span>
 								</td>
 							</tr>
 							<tr>
 								<td>비밀번호</td>
-								<td><input type="password" name="pw1" placeholder="비밀번호를 입력" required /></td>
+								<td><input type="password" name="pass" placeholder="비밀번호를 입력" required /></td>
 							</tr>
 							<tr>
 								<td>비밀번호확인</td>

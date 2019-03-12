@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.co.sboard.dao.MemberDao;
+import kr.co.sboard.vo.MemberVO;
 import kr.co.sboard.vo.TermsVO;
 
 @Service
@@ -18,9 +19,9 @@ public class MemberServiceImpl implements MemberService{
 		dao.login();
 	}
 	@Override
-	public void register() {
+	public void register(MemberVO vo) {
 		// TODO Auto-generated method stub
-		dao.register();
+		dao.register(vo);
 	}
 	@Override
 	public TermsVO terms() {
