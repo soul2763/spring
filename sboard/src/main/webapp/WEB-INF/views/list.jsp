@@ -11,7 +11,7 @@
 			<h3>글목록</h3>
 			<!-- 리스트 -->
 			<div class="list">
-				<p class="logout">홍길동님! 반갑습니다. <a href="#">[로그아웃]</a><p>
+				<p class="logout">${member.nick}님! 반갑습니다. <a href="/sboard/member/logout">[로그아웃]</a><p>
 				<table>
 					<tr>
 						<td>번호</td>
@@ -38,7 +38,7 @@
 				<a href="#" class="next">다음</a>
 				</span>
 			</nav>
-			<a href="#" class="btnWrite">글쓰기</a>
+			<a href="/sboard/write" class="btnWrite">글쓰기</a>
 		</div>
 	</body>
 

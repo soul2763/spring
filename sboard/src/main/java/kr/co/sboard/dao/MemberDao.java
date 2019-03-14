@@ -14,8 +14,8 @@ public class MemberDao {
 	@Inject
 	private SqlSessionTemplate mybatis;
 	
-	public void login() {
-		
+	public MemberVO login(MemberVO vo) {
+		return mybatis.selectOne("ns.mapper.sql_member.SELECT_MEMBER",vo);
 	}
 	public TermsVO terms() {
 		

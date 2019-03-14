@@ -19,4 +19,8 @@
 			regip=#{regip},	
 			rdate=NOW();	
 	</insert>
+	<select id="SELECT_MEMBER" resultType="kr.co.sboard.vo.MemberVO">
+		select * from JSP_MEMBER
+		where uid=#{uid} and pass=PASSWORD(${pass});
+	</select>
 </mapper>

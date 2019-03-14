@@ -4,4 +4,23 @@
 	<select id="SELECT_TERMS" resultType="kr.co.sboard.vo.TermsVO">
 		SELECT * FROM `JSP_TERMS`;
 	</select>
+	
+	<insert id="INSERT_MEMBER">
+		insert into JSP_MEMBER set
+			uid=#{uid},
+			pass=PASSWORD(#{pass}),
+			name=#{name},
+			nick=#{nick},
+			email=#{email},
+			hp=#{hp},
+			zip=#{zip},	
+			addr1=#{addr1},	
+			addr2=#{addr2},	
+			regip=#{regip},	
+			rdate=NOW();	
+	</insert>
+	<select id="SELECT_MEMBER" resultType="kr.co.sboard.vo.MemberVO">
+		select * from JSP_MEMBER
+		where uid=#{uid} and pass=PASSWORD(${pass});
+	</select>
 </mapper>
