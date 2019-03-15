@@ -21,16 +21,30 @@ public class BoardDaoTest {
 	private BoardDao dao;
 	
 	
-	@Test
-	public void registerTest() {
+	
+	public void WriteTest() {
 		BoardVO vo = new BoardVO();
 		vo.setCate("title");
 		vo.setTitle("제목 테스트입니다.");
 		vo.setContent("내용");
 		vo.setUid("abcd123");
 		vo.setRegip("129.1.1.1");
-		dao.write(vo);
-		System.out.println("register 테스트 완료");
+		int seq = dao.write(vo);
+		System.out.println("register 테스트 완료" + seq);
+	}
+	
+	
+	@Test
+	public void viewTest() {
+		dao.view(1136);
+	}
+	public void getTotalCount() {
+		int count = dao.getTotalCount();
+		System.out.println("게시물 카운트 : " + count);
+	}
+	
+	public void list() {
+		
 	}
 }
  

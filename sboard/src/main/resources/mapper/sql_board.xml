@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ns_mapper_sql_board">
-	<insert id="INSERT_BOARD">
+	<insert id="INSERT_BOARD" parameterType="kr.co.sboard.vo.BoardVO" useGeneratedKeys="true" keyProperty="seq">
 		insert into JSP_BOARD set
 		cate=#{cate},
 		title=#{title},
 		content=#{content},
 		file=#{file},
 		uid=#{uid},
-		regip=#{regip};
+		regip=#{regip},
+		rdate=NOW();
 	</insert>
+
+	<insert id="INSERT_FILE">
+		insert into JSP_FILE set
+		parent=#{seq},
+		oldName=#{oldName},
+		newName=#{newName},
+		rdate=NOW();
+	</insert>
+	
+	<select id="SELECT_LIST" resultType="kr.co.sboard.vo.BoardVO">
+		select b.*,n.nick from JSP_BOARD as b join JSP_MEMBER as n on b.uid = n.uid 
+		where parent=0 and cate='notice'
+		order by seq DESC
+		limit #{start}, 10;
+	</select>
+	
+	<select id="SELECT_LIST_COUNT" resultType="int">
+		select count(*) from JSP_BOARD
+		where parent=0 and cate='notice';
+	</select>
+	
+	<select id="SELECT_FILE" resultType="kr.co.sboard.vo.FileVO">
+		select * from JSP_FILE where parent=#{parent};
+	</select>
+	
+	<select id="SELECT_VIEW" resultType="kr.co.sboard.vo.BoardVO">
+		select * from `JSP_BOARD` as b 
+		left join `JSP_FILE` as f 
+		on b.seq = f.parent 
+		where b.seq = #{seq};
+	</select>
 </mapper>
