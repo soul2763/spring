@@ -21,6 +21,15 @@ public class ShopGoodsVO {
 	private String GOODS_RECOMMENDATION;
 	private String GOODS_CONTENTS_ORDER;
 	private String GOODS_CREDATE;
+	
+	private String FILENAME;
+	
+	public String getFILENAME() {
+		return FILENAME;
+	}
+	public void setFILENAME(String fILENAME) {
+		FILENAME = fILENAME;
+	}
 	public int getGOODS_ID() {
 		return GOODS_ID;
 	}

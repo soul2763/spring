@@ -11,7 +11,17 @@
 		
 	</select>
 	
+	<select id="selectGoodsDetail" resultType="kr.co.booktopia.vo.ShopGoodsVO">
+		select g.*, d.fileName from BT_SHOP_GOODS g, BT_SHOP_GOODS_IMAGE d
+		where g.GOODS_ID=d.GOODS_ID
+		and d.FILETYPE='main_image'
+		and g.GOODS_ID=#{goods_id};
+	</select>
 
+	<select id="selectGoodsImage" resultType="kr.co.booktopia.vo.ShopGoodsImageVO">
+		select * from BT_SHOP_GOODS_IMAGE
+		where FILETYPE != 'main_image' and GOODS_id=#{goods_id};
+	</select>
 </mapper>
 
 

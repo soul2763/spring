@@ -34,8 +34,8 @@
     <h3>베스트셀러</h3>
     <c:forEach var="item" items="${goodsMap.bestseller}">
 	    <div class="book">
-	      <a href="#">
-	        <img width="121" height="154" src="/booktopia/goods/thumb_395.png">
+	      <a href="/booktopia/shop/view?goods_id=${item.GOODS_ID}">
+	        <img width="121" height="154" src="/booktopia/goods/thumbnail?goods_id=${item.GOODS_ID}&fileName=${item.FILENAME}">
 	        <div class="title">${item.GOODS_TITLE}</div>
 	        <div class="price"><fmt:formatNumber value="${item.GOODS_PRICE}" type="number" var="goods_price"/>${goods_price}원</div>
 	      </a>
@@ -54,7 +54,7 @@
     <c:forEach var="item" items="${goodsMap.newbook}">
 	    <div class="book">
 	      <a href="#">
-	        <img width="121" height="154" src="/booktopia/goods/thumb_397.png">
+	        <img width="121" height="154" src="/booktopia/goods/thumbnail?goods_id=${item.GOODS_ID}&fileName=${item.FILENAME}">
 	        <div class="title">${item.GOODS_TITLE}</div>
 	        <div class="price"><fmt:formatNumber value="${item.GOODS_PRICE}" type="number" var="goods_price"/>${goods_price}원</div>
 	      </a>
@@ -75,7 +75,7 @@
     <c:forEach var="item" items="${goodsMap.steadyseller}">
 	    <div class="book">
 	      <a href="#">
-	        <img width="121" height="154" src="/booktopia/goods/thumb_397.png">
+	        <img width="121" height="154" src="/booktopia/goods/thumbnail?goods_id=${item.GOODS_ID}&fileName=${item.FILENAME}">
 	        <div class="title">${item.GOODS_TITLE}</div>
 	        <div class="price"><fmt:formatNumber value="${item.GOODS_PRICE}" type="number" var="goods_price"/>${goods_price}원</div>
 	      </a>
