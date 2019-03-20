@@ -1,5 +1,7 @@
 package kr.co.booktopia.serviceImpl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -27,5 +29,15 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public ShopGoodsImageVO goodsDetailImage(String goods_id) {
 		return dao.goodsDetailImage(goods_id);
+	}
+	
+	@Override
+	public List<String> keywordAutoComplete(String keyword) {
+		return dao.goodsKeywordForAutoComplete(keyword);
+	}
+	
+	@Override
+	public List<ShopGoodsVO> searchGoods(String searchWord) {
+		return dao.searchGoods(searchWord);
 	}
 }

@@ -1,5 +1,9 @@
 package kr.co.booktopia.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.booktopia.service.ShopService;
 import kr.co.booktopia.vo.ShopGoodsImageVO;
@@ -46,4 +51,21 @@ public class ShopController {
 		return "/shop/cart";
 	}
 	
+	@RequestMapping("/shop/keywordAutoComplete")
+	public @ResponseBody Map<String, List<String>> keywordAutoComplete(String keyword, HttpServletRequest req, HttpServletResponse resp){
+		
+		List<String> keywordList = service.keywordAutoComplete(keyword);
+		
+		//json 데이터 객체 생성(jackson 라이브러리 필요)
+		Map<String,List<String>> json = new HashMap<String, List<String>>();
+		json.put("keyword",keywordList);
+		return json;
+	}
+	
+	@RequestMapping("/shop/search")
+	public String search(Model model, String searchWord, HttpServletRequest req, HttpServletResponse resp) {
+		List<ShopGoodsVO> goodsList = service.searchGoods(searchWord);
+		model.addAttribute("goodsList", goodsList);
+		return "/shop/list";
+	}
 }

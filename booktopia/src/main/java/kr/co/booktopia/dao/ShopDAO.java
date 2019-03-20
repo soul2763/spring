@@ -1,5 +1,7 @@
 package kr.co.booktopia.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,5 +26,13 @@ public class ShopDAO {
 	
 	public ShopGoodsImageVO goodsDetailImage(String goods_id) {
 		return mybatis.selectOne("bt.mapper.goods.selectGoodsImage", goods_id);
+	}
+
+	public List<String> goodsKeywordForAutoComplete(String keyword) {
+		return mybatis.selectList("bt.mapper.goods.selectKeywordSearchForAutoComplete", keyword);
+	}
+	
+	public List<ShopGoodsVO> searchGoods(String searchWord){
+		return mybatis.selectList("bt.mapper.goods.selectGoodsBySearchWord", searchWord);
 	}
 }

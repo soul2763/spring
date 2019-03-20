@@ -22,6 +22,20 @@
 		select * from BT_SHOP_GOODS_IMAGE
 		where FILETYPE != 'main_image' and GOODS_id=#{goods_id};
 	</select>
+	
+	<select id="selectGoodsBySearchWord" resultType="kr.co.booktopia.vo.ShopGoodsVO">
+		select g.*, d.fileName from BT_SHOP_GOODS g, BT_SHOP_GOODS_IMAGE d
+		where g.GOODS_ID=d.GOODS_ID
+		and d.FILETYPE='main_image'
+		and g.GOODS_TITLE LIKE CONCAT('%', #{searchWord}, '%')
+		order by g.GOODS_CREDATE desc;
+	</select>
+	
+	<select id="selectKeywordSearchForAutoComplete" resultType="String">
+		select GOODS_TITLE from BT_SHOP_GOODS
+		where GOODS_TITLE LIKE CONCAT('%', #{keyword}, '%')
+		order by GOODS_CREDATE desc;
+	</select>
 </mapper>
 
 
