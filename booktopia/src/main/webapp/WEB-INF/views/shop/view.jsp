@@ -2,6 +2,30 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../_head.jsp" %>
+
+<script>
+	function addCart(goods_id){
+		$.ajax({
+			type : "get",			
+			url : "/booktopia/shop/addGoodsInCart",
+			data : {'goods_id':goods_id},
+			success : function(data) {
+				
+				if(data.trim() == 'success'){
+					alert('장바구니에 상품이 등록되었습니다.');
+				}else{
+					alert('이미 등록된 상품입니다.');
+				}
+			}
+		}); 
+		
+	}// End addCart
+</script>
+
+<div id="dialog" title="Basic dialog">
+	<h1>확인</h1>
+</div>
+
 <article>
   <hgroup>
     <h1>컴퓨터와 인터넷</h1>
@@ -83,7 +107,7 @@
     </table>
     <ul>
       <li><a class="buy" href="#">구매하기 </a></li>
-      <li><a class="cart" href="#">장바구니</a></li>
+      <li><a class="cart" href="javascript:addCart(${goodsVO.GOODS_ID})">장바구니</a></li>
       <li><a class="wish" href="#">위시리스트</a></li>
     </ul>
   </div>

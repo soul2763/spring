@@ -36,6 +36,43 @@
 		where GOODS_TITLE LIKE CONCAT('%', #{keyword}, '%')
 		order by GOODS_CREDATE desc;
 	</select>
+	
+	<select id="selectCountInCart" resultType="String">
+		select if(count(*) = 0, 'false', 'true') from BT_SHOP_CART
+		where GOODS_ID=#{GOODS_ID} and MEMBER_ID=#{MEMBER_ID};
+	</select>
+	
+	<insert id="insertGoodsInCart">
+		insert into BT_SHOP_CART (CART_ID, GOODS_ID, MEMBER_ID, CREDATE)
+		value(#{CART_ID}, #{GOODS_ID}, #{MEMBER_ID}, NOW());
+	</insert>
+	
+	<select id="selectCartList" resultType="kr.co.booktopia.vo.ShopCartVO">
+		select * from BT_SHOP_CART where MEMBER_ID=#{member_id};
+	</select>
+	
+	<select id="selectGoodsListForCart" resultType="kr.co.booktopia.vo.ShopGoodsVO">
+		select g.*, d.FILENAME from BT_SHOP_GOODS as g, BT_SHOP_GOODS_IMAGE as d
+		where g.GOODS_ID=d.GOODS_ID
+		and d.FILETYPE='main_image'
+		and g.GOODS_ID in
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{item.GOODS_ID}
+		</foreach>
+		order by g.GOODS_CREDATE;
+		<!-- 
+			SELECT g.*, d.FILENAME FROM BT_SHOP_GOODS AS g, BT_SHOP_GOODS_IMAGE AS d
+	 		WHERE g.GOODS_ID=d.GOODS_ID 
+	 		AND d.FILETYPE='main_image' 
+	 		AND g.GOODS_ID IN (상품아이디1, 상품아이디2, 상품아이디3...) 
+	 		ORDER BY g.GOODS_CREDATE; 
+		 -->	
+	</select>
+	
+	<select id="selectMaxCartId" resultType="int">
+		select if(isnull(max(CART_ID)), 1, max(CART_ID) + 1)
+		from BT_SHOP_CART;
+	</select>
 </mapper>
 
 

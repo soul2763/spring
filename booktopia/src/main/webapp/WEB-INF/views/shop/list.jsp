@@ -27,7 +27,7 @@
 					<c:forEach var="item" items="${goodsList}">
 					   	<li>
 					      <div id="book">
-					        <a href="#"><img width="75" alt="" src="${ctxPath}/goods/thumbnail?goods_id=${item.GOODS_ID}&fileName=${item.FILENAME}"></a>
+					        <a href="#"><img width="75" alt="" src="/booktopia/goods/thumbnail?goods_id=${item.GOODS_ID}&fileName=${item.FILENAME}"></a>
 					        <div class="sort">[컴퓨터 인터넷]</div>
 					        <div class="title">
 					          <a href="#">${item.GOODS_TITLE}</a>

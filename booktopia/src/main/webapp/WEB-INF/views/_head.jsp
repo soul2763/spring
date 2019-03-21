@@ -68,12 +68,18 @@
     <div id="wrap">
       <header>
         <div id="logo">
-          <a href="#"><img width="176" height="80" alt="booktopia" src="/booktopia/img/Booktopia_Logo.jpg"></a>
+          <a href="/booktopia"><img width="176" height="80" alt="booktopia" src="/booktopia/img/Booktopia_Logo.jpg"></a>
         </div>
         <div id="head_link">
           <ul>
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
+            <c:if test="${empty memberVO}">        
+            	<li><a href="/booktopia/member/login">로그인</a></li>
+            	<li><a href="/booktopia/member/register">회원가입</a></li>
+            </c:if>
+            <c:if test="${not empty memberVO}">
+            	<li><a href="/booktopia/member/logout">로그아웃</a></li>
+            	<li><a href="/booktopia/shop/cart">장바구니</a></li>
+            </c:if>
             <li><a href="#">고객센터</a></li>
           </ul>
         </div>

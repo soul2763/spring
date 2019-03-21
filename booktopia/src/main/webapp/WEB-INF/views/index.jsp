@@ -41,7 +41,7 @@
 	      </a>
 	    </div>
     </c:forEach>
-    
+  </div>
     
   <div id="ad_sub_banner">
     <img width="770" height="117" src="/booktopia/img/sub_banner01.jpg">
